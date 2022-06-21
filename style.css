@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "HyperSpace";
+    src: url("Hyperspace.otf");
+}
+
+* {
+    font-family: HyperSpace;
+    color: white;
+    font-size: 50px;
+}
+
+body {
+    background-image: url("stars.jpg");
+    background-size: 50%;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+#gameDescription {
+    font-size: 0.8em;
+    display: block;
+    max-width: 35vw;
+    text-align: justify;
+}
+
+#leaderBoard {
+    max-width: 35vw;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.posTD {
+    text-align: left;
+    width: 20%;
+}
+
+.nameTD {
+    width: 60%;
+    word-break: break-all;
+}
+
+.ptsTD {
+    text-align: right;
+    width: 20%;
+}
+
+table,
+thead,
+tbody,
+td,
+tr,
+th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+@media all and (max-width: 601px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    * {
+        font-size: 24px;
+    }
+
+    #container {
+        flex-direction: column-reverse;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+
+    #gameDescription {
+        display: block;
+        max-width: 98vw;
+    }
+
+    #leaderBoard {
+        max-width: 98vw;
+    }
+
+    table,
+    thead,
+    tbody,
+    td,
+    tr,
+    th {
+        padding: 0;
+        margin: 0;
+    }
+}
