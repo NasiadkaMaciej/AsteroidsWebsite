@@ -35,24 +35,28 @@
 			<tbody>
 
 				<?php
-				//Read data from server
-				$server="";
-				$login="";
-				$password="";
-				$db="";
+				//Read and show data from server
+				$server = "";
+				$login = "";
+				$password = "";
+				$db = "";
 
-				$connection = mysqli_connect($server, $login, $password, $db);
+				$connection = new mysqli($server, $login, $password, $db);
 
-				if (isset($_GET["pos"])) {
-					$pos = $_GET["pos"];
-				} else {
-					$pos = 0;
+				if ($mysqli->connect_errno) {
+					printf("Failed to connect to MySQL: ", $mysqli->connect_error);
+					exit();
 				}
 
+				if (isset($_GET["pos"]))
+					$pos = $_GET["pos"];
+				else
+					$pos = 0;
+
 				$query = "SELECT name, points FROM leaderboard ORDER BY `leaderboard`.`points` DESC, `leaderboard`.`name` DESC LIMIT " . $pos . ",10";
-				$result = mysqli_query($connection, $query);
+				$result = $connection->query($query);
 				$i = $pos + 1;
-				while ($line = mysqli_fetch_assoc($result)) {
+				while ($line = $result->fetch_assoc()) {
 					echo "<tr>
 					<td class='posTD'>" . $i . "</td>
 					<td class='nameTD'>" . $line["name"] . "</td>
@@ -68,7 +72,7 @@
 						$points = $_POST["points"];
 
 						$query = "SELECT points from leaderboard WHERE name='$name'";
-						$result = mysqli_query($connection, $query);
+						$result = $connection->query($query);
 
 						if (mysqli_num_rows($result) == 0) {
 							$query = "INSERT INTO leaderboard VALUES ('" . $name . "', '" . $points . "')";
@@ -80,13 +84,14 @@
 							}
 						}
 
-						mysqli_query($connection, $query);
+						$result = $connection->query($query);
 					}
 				}
 				?>
 				<tr>
 					<td>
 						<?php
+						//Handle going back in leaderboard
 						$prevpos = $pos - 10;
 						if ($prevpos >= 0) {
 							echo '<a href="index.php?pos=' . $prevpos . '">Back</a>';
@@ -96,16 +101,17 @@
 					<td></td>
 					<td>
 						<?php
+						//Handle going to next page in leaderboard
 						$query = "SELECT * FROM leaderboard";
-						$result = mysqli_query($connection, $query);
+						$result = $connection->query($query);
 						$rowcount = mysqli_num_rows($result);
-						//$maxValue =  round($rowcount, -1, PHP_ROUND_HALF_UP);
 						$maxValue = ceil($rowcount / 10) * 10;
-						//$maxValue =  ceil($rowcount)
 						$nextpos = $pos + 10;
 						if ($nextpos < $maxValue) {
 							echo '<a href="index.php?pos=' . $nextpos . '">Next</a>';
 						}
+
+						$connection->close();
 						?>
 					</td>
 				</tr>
