@@ -18,19 +18,19 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
 }
 
 #gameDescription {
     font-size: 0.8em;
     display: block;
-    max-width: 35vw;
+    max-width: 38vw;
     text-align: justify;
 }
 
 #leaderBoard {
-    max-width: 35vw;
+    max-width: 38vw;
 }
 
 table {
@@ -75,7 +75,7 @@ th {
     }
 
     * {
-        font-size: 24px;
+        font-size: 26px;
     }
 
     #container {
@@ -87,6 +87,7 @@ th {
     #gameDescription {
         display: block;
         max-width: 98vw;
+        font-size: 0.9em;
     }
 
     #leaderBoard {
@@ -101,5 +102,6 @@ th {
     th {
         padding: 0;
         margin: 0;
+        line-height: 1.5;
     }
 }
