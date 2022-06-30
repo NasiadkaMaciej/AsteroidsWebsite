@@ -30,6 +30,7 @@
 					<th class='posTD'>Pos</th>
 					<th class='nameTD'>Name</th>
 					<th class='ptsTD'>Points</th>
+					<th class='dateTD'>Date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,8 +44,8 @@
 
 				$connection = new mysqli($server, $login, $password, $db);
 
-				if ($mysqli->connect_errno) {
-					printf("Failed to connect to MySQL: ", $mysqli->connect_error);
+				if ($connection->connect_errno) {
+					printf("Failed to connect to MySQL: ", $connection->connect_error);
 					exit();
 				}
 
@@ -53,14 +54,18 @@
 				else
 					$pos = 0;
 
-				$query = "SELECT name, points FROM leaderboard ORDER BY `leaderboard`.`points` DESC, `leaderboard`.`name` DESC LIMIT " . $pos . ",10";
+				$query = "SELECT name, points, date FROM leaderboard ORDER BY `leaderboard`.`points` DESC, `leaderboard`.`name` DESC LIMIT " . $pos . ",10";
 				$result = $connection->query($query);
 				$i = $pos + 1;
 				while ($line = $result->fetch_assoc()) {
+
+					$line["date"] = substr($line["date"], 2); 
+
 					echo "<tr>
 					<td class='posTD'>" . $i . "</td>
 					<td class='nameTD'>" . $line["name"] . "</td>
 					<td class='ptsTD'>" . $line["points"] . "</td>
+					<td class='dateTD'>" . $line["date"] . "</td>
 					</tr>";
 					$i = $i + 1;
 				}
@@ -70,12 +75,11 @@
 					if ($secret = "") {
 						$name = strtolower($_POST["name"]);
 						$points = $_POST["points"];
-
 						$query = "SELECT points from leaderboard WHERE name='$name'";
 						$result = $connection->query($query);
 
 						if (mysqli_num_rows($result) == 0) {
-							$query = "INSERT INTO leaderboard VALUES ('" . $name . "', '" . $points . "')";
+							$query = "INSERT INTO leaderboard (name, points) VALUES ('" . $name . "', '" . $points . "')";
 						} else {
 							$row = mysqli_fetch_array($reqsult);
 							$lastScore = $row[0];
@@ -105,7 +109,9 @@
 						$query = "SELECT * FROM leaderboard";
 						$result = $connection->query($query);
 						$rowcount = mysqli_num_rows($result);
+						//$maxValue =  round($rowcount, -1, PHP_ROUND_HALF_UP);
 						$maxValue = ceil($rowcount / 10) * 10;
+						//$maxValue =  ceil($rowcount)
 						$nextpos = $pos + 10;
 						if ($nextpos < $maxValue) {
 							echo '<a href="index.php?pos=' . $nextpos . '">Next</a>';

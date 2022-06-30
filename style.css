@@ -6,7 +6,7 @@
 * {
     font-family: HyperSpace;
     color: white;
-    font-size: 50px;
+    font-size: 38px;
 }
 
 body {
@@ -23,14 +23,13 @@ body {
 }
 
 #gameDescription {
-    font-size: 0.8em;
     display: block;
-    max-width: 38vw;
+    max-width: 35%;
     text-align: justify;
 }
 
 #leaderBoard {
-    max-width: 38vw;
+    max-width: 55%;
 }
 
 table {
@@ -44,17 +43,24 @@ tr {
 
 .posTD {
     text-align: left;
-    width: 20%;
+    width: max-content;
 }
 
 .nameTD {
-    width: 60%;
+    width: 45%;
     word-break: break-all;
 }
 
 .ptsTD {
+    text-align: center;
+    width: max-content;
+}
+
+.dateTD {
     text-align: right;
-    width: 20%;
+    width: max-content;
+    word-break: break-all;
+
 }
 
 table,
@@ -79,19 +85,22 @@ th {
     }
 
     #container {
-        flex-direction: column-reverse;
-        margin-left: 1vw;
-        margin-right: 1vw;
+        flex-direction: column;
+        margin-left: 3vw;
+        margin-right: 3vw;
     }
 
     #gameDescription {
         display: block;
-        max-width: 98vw;
-        font-size: 0.9em;
+        max-width: 94vw;
     }
 
     #leaderBoard {
-        max-width: 98vw;
+        max-width: 94vw;
+    }
+
+    .dateTD {
+        display: none;
     }
 
     table,
