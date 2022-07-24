@@ -6,7 +6,7 @@
 * {
     font-family: HyperSpace;
     color: white;
-    font-size: 38px;
+    font-size: 42px;
 }
 
 body {
@@ -102,7 +102,9 @@ th {
     .dateTD {
         display: none;
     }
-
+    .ptsTD {
+        text-align: right;
+    }
     table,
     thead,
     tbody,

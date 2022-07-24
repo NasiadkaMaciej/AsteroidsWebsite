@@ -59,7 +59,7 @@
 				$i = $pos + 1;
 				while ($line = $result->fetch_assoc()) {
 
-					$line["date"] = substr($line["date"], 2); 
+					$line["date"] = substr($line["date"], 2);
 
 					echo "<tr>
 					<td class='posTD'>" . $i . "</td>
@@ -68,28 +68,6 @@
 					<td class='dateTD'>" . $line["date"] . "</td>
 					</tr>";
 					$i = $i + 1;
-				}
-
-				//Save data to server
-				if (isset($_POST["name"]) && isset($_POST["points"]) && isset($_POST["secret"])) {
-					if ($secret = "") {
-						$name = strtolower($_POST["name"]);
-						$points = $_POST["points"];
-						$query = "SELECT points from leaderboard WHERE name='$name'";
-						$result = $connection->query($query);
-
-						if (mysqli_num_rows($result) == 0) {
-							$query = "INSERT INTO leaderboard (name, points) VALUES ('" . $name . "', '" . $points . "')";
-						} else {
-							$row = mysqli_fetch_array($reqsult);
-							$lastScore = $row[0];
-							if ($lastScore < $points) {
-								$query = "UPDATE leaderboard SET points=" . $points . " WHERE name='$name'";
-							}
-						}
-
-						$result = $connection->query($query);
-					}
 				}
 				?>
 				<tr>
