@@ -6,7 +6,7 @@
 * {
     font-family: HyperSpace;
     color: white;
-    font-size: 42px;
+    font-size: 30px;
 }
 
 body {
@@ -18,8 +18,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 3vw;
-    margin-right: 3vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 
 #gameDescription {
@@ -63,6 +63,27 @@ tr {
 
 }
 
+#kb {
+    margin: auto;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#links, #completeGameDescription {
+    margin: auto;
+    text-align: center;
+
+}
+
+#manual {
+    columns: 2;
+    text-align: center;
+}
+
+#completeGameDescription{
+    width: 80%;
+}
+
 table,
 thead,
 tbody,
@@ -81,7 +102,7 @@ th {
     }
 
     * {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     #container {
@@ -102,9 +123,11 @@ th {
     .dateTD {
         display: none;
     }
+
     .ptsTD {
         text-align: right;
     }
+
     table,
     thead,
     tbody,
@@ -114,5 +137,11 @@ th {
         padding: 0;
         margin: 0;
         line-height: 1.5;
+    }
+}
+
+@media all and (min-width: 1921px) {
+    * {
+        font-size: 44px;
     }
 }

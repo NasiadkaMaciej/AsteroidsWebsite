@@ -1,7 +1,4 @@
 <?php
-
-// File with no secrets filled
-
 //Read and show data from server
 $server = "";
 $login = "";
