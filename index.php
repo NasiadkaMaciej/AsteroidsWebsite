@@ -6,6 +6,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<meta name="description" content="Asteroids game clone written in C++ with SFML - Maciej Nasiadka" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Maciej Nasiadka" />
+	<meta property="og:description" content="Asteroids game clone written in C++ with SFML - Maciej Nasiadka" />
 	<link rel="stylesheet" href="style.css">
 	<title>Asteroids</title>
 </head>
@@ -15,8 +19,9 @@
 	<div id="container">
 		<p id="gameDescription">
 			Destroy as many asteroids as you can with your spaceship's missiles.<br>
-			Be carefull! Asteroids aren't the only danger in space. Watch out for evil UFO trying to shoot you down.
-			<a href="Asteroids.zip">Download game</a>
+			Be careful! Asteroids aren't the only danger in space. Watch out for evil UFO trying to shoot you down.<br>
+			<a href="AsteroidsWindows.zip">Download game (Windows)</a><br>
+			<a href="AsteroidsLinux.zip">Download game (Linux)</a>
 		</p>
 
 		<table id="leaderBoard">
@@ -98,6 +103,7 @@
 		</table>
 		<br><br>
 	</div>
+	<br>
 	<div id="links">
 		<a href="https://github.com/NasiadkaMaciej/Asteroids"><img src="GitHub-Mark-Light-64px.png" alt="My GitHub"></a>
 		<a href="https://maciej.ml"><img src="Home-icon.png" alt="My home page"></a>
@@ -128,7 +134,7 @@
 	<p style="text-align: center;"><video src="Asteroids.mp4" type="video/mp4" controls alt="Movie presenting game" width="90%"></p>
 	<p id="completeGameDescription">
 		Asteroids game clone. Written in C++ with SFML.<br>
-		Destroy as many asteroids as you can with your spaceship's missiles, but be careful, they come from all sides, at different speeds and, when destroyed, they break into more, even faster and more dangerous fragments. Be cautious! Once in a while, a mysterious evil UFO shows up and starts shooting to you. Each level ends after destroying all visible asteroids. After that, you get into the next level, which has 2 more asteroids than the previous one. You start the game with 3 lives, after you lose one, you enter idle state, in which asteroids cannot hurt you, but you can't shoot them. To continue the game, simply move your ship. When you loose all your lives you can save your score and send it to Asteroids online leaderboard
+		Destroy as many asteroids as you can with your spaceship's missiles, but be careful, they come from all sides, at different speeds and, when destroyed, they break into more, even faster and more dangerous fragments. Be cautious! Once in a while, a mysterious evil UFO shows up and starts shooting to you. Each level ends after destroying all visible asteroids. After that, you get into the next level, which has 2 more asteroids than the previous one. You start the game with 3 lives, after you lose one, you enter idle state, in which asteroids cannot hurt you, but you can't shoot them. To continue the game, simply move your ship. When you lose all your lives you can save your score and send it to Asteroids online leaderboard
 	</p>
 </body>
 

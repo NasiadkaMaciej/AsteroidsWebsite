@@ -1,0 +1,33 @@
+body {
+    background-color: #0000aa;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 14pt;
+	font-weight: 700;
+    color: white;
+    font-family: fixedsys, terminal, courier, monospace;
+    padding-top: 15%;
+}
+#Container {
+    width: 650px;
+    margin: 0 auto;
+    text-align: left;
+}
+p {
+	text-align: center;
+}
+p.title {
+    background-color: #ffffff;
+    color: #0000aa;
+	padding: 8px 4px 4px;
+	width: max-content;
+	margin-left: auto; margin-right: auto;
+}
+p.error{
+	text-align: left;
+}
+a {
+    color: white;
+}

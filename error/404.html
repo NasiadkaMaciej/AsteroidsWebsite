@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>404 Error (page not found)</title>
+		<link rel="stylesheet" type="text/css" href="/error/style.css" />
+	</head>
+
+	<body>
+		<div id="Container">
+			<div>
+				<p class="title">404 Error (page not found)</p>
+				<p class="error">
+					A fatal exception
+					<a href="#" title="Page not found">404</a> has
+					occurred at F001:7001337. The current application will be
+					terminated.
+				</p>
+				<ul>
+					<li>Press any key to terminate the current application.</li>
+					<li>
+						Press CTRL+ALT+DEL to restart your computer. You
+						will lose any unsaved information in all applications.
+					</li>
+				</ul>
+				<br>
+					<p>Press any key to continue <span id="blink">_</span></p>
+			</div>
+		</div>
+		<script>
+			var blink_speed = 200; // every 1000 == 1 second, adjust to suit
+			var t = setInterval(function () {
+    		var ele = document.getElementById('blink');
+			ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden');
+		}, blink_speed);
+
+			document.body.addEventListener("keydown", function (event) {
+				window.location.replace("https://asteroids.ml");
+		});
+		</script>
+	</body>
+</html>
