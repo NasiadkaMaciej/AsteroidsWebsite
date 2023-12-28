@@ -75,9 +75,11 @@
 						<?php
 						//Handle going back in leaderboard
 						$prevpos = $pos - 10;
-						if ($prevpos >= 0) {
-							echo '<a href="index.php?pos=' . $prevpos . '">Back</a>';
-						}
+						if ($prevpos > 0)
+							echo '<a href="/asteroids/?pos=' . $prevpos . '">Back</a>';
+						elseif ($prevpos == 0)
+							echo '<a href="/asteroids/">Back</a>';
+
 						?>
 					</td>
 					<td></td>
@@ -91,9 +93,8 @@
 						$maxValue = ceil($rowcount / 10) * 10;
 						//$maxValue =  ceil($rowcount)
 						$nextpos = $pos + 10;
-						if ($nextpos < $maxValue) {
-							echo '<a href="index.php?pos=' . $nextpos . '">Next</a>';
-						}
+						if ($nextpos < $maxValue)
+							echo '<a href="/asteroids/?pos=' . $nextpos . '">Next</a>';
 
 						$connection->close();
 						?>
@@ -106,7 +107,7 @@
 	<br>
 	<div id="links">
 		<a href="https://github.com/NasiadkaMaciej/Asteroids"><img src="GitHub-Mark-Light-64px.png" alt="My GitHub"></a>
-		<a href="https://maciej.ml"><img src="Home-icon.png" alt="My home page"></a>
+		<a href="https://nasiadka.pl"><img src="Home-icon.png" alt="My home page"></a>
 	</div><br>
 	<p id="kb">Keybindings:</p>
 	<div id="manual">
@@ -131,11 +132,16 @@
 			L1 - Toggling fullscreen<br>
 			R1 - Toggle music at any time</p>
 	</div>
-	<p style="text-align: center;"><video src="Asteroids.mp4" type="video/mp4" controls alt="Movie presenting game" width="90%"></p>
+	<p style="text-align: center;">
+		<iframe style="width: 63vw; height: 27vw" src="https://www.youtube.com/embed/zexjrqSEklM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
 	<p id="completeGameDescription">
 		Asteroids game clone. Written in C++ with SFML.<br>
 		Destroy as many asteroids as you can with your spaceship's missiles, but be careful, they come from all sides, at different speeds and, when destroyed, they break into more, even faster and more dangerous fragments. Be cautious! Once in a while, a mysterious evil UFO shows up and starts shooting to you. Each level ends after destroying all visible asteroids. After that, you get into the next level, which has 2 more asteroids than the previous one. You start the game with 3 lives, after you lose one, you enter idle state, in which asteroids cannot hurt you, but you can't shoot them. To continue the game, simply move your ship. When you lose all your lives you can save your score and send it to Asteroids online leaderboard
 	</p>
+	<footer>
+		<p><a href="https://nasiadka.pl/">Maciej Nasiadka © 2023</a></p>
+	</footer>
 </body>
 
 </html>

@@ -94,6 +94,13 @@ th {
     vertical-align: middle;
 }
 
+footer p a{
+    display: block;
+    font-size: 0.8em;
+    margin: auto;
+    text-align: center;
+}
+
 @media all and (max-width: 601px) {
 
     html,
