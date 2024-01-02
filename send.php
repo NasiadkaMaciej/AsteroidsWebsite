@@ -1,36 +1,40 @@
 <?php
-//Read and show data from server
-$server = "";
-$login = "";
-$password = "";
-$db = "";
-
-define("SECRET", "");
-
-$connection = new mysqli($server, $login, $password, $db);
+include("config.php");
+$connection = new mysqli($SERVER, $LOGIN, $PASSWORD, $DB);
 if ($connection->connect_errno) {
     printf("Failed to connect to MySQL: ", $connection->connect_error);
     exit();
 }
-//Save data to server
+
 if (isset($_POST["name"]) && isset($_POST["points"]) && isset($_POST["secret"])) {
-    if (isset($_POST["secret"]) == SECRET) {
-        $name = strtolower($_POST["name"]);
-        $points = $_POST["points"];
-        $query = "SELECT points from leaderboard WHERE name='$name'";
-        $result = $connection->query($query);
+    $name = strtolower($_POST["name"]);
+    $points = $_POST["points"];
+    $secret = $_POST["secret"];
 
-        if (mysqli_num_rows($result) == 0) {
-            $query = "INSERT INTO leaderboard (name, points) VALUES ('" . $name . "', '" . $points . "')";
-        } else {
-            $row = mysqli_fetch_array($reqsult);
-            $lastScore = $row[0];
-            if ($lastScore < $points) {
-				$query = "UPDATE leaderboard SET points=" . $points . ", date=CURRENT_TIMESTAMP() WHERE name='$name'";
-            }
+    $query = "SELECT points from leaderboard WHERE name=?";
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param("s", $name);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows == 0) {
+        $query = "INSERT INTO leaderboard (name, points) VALUES (?, ?)";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("si", $name, $points);
+    } else {
+        $stmt->bind_result($lastScore);
+        $stmt->fetch();
+
+        if ($lastScore < $points) {
+            $query = "UPDATE leaderboard SET points=?, date=CURRENT_TIMESTAMP() WHERE name=?";
+            $stmt = $connection->prepare($query);
+            $stmt->bind_param("is", $points, $name);
         }
-
-        $result = $connection->query($query);
     }
+
+    if ($secret == $SECRET) {
+        $stmt->execute();
+    }
+
+    $stmt->close();
 }
-?>

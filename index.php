@@ -11,6 +11,7 @@
 	<meta property="og:title" content="Maciej Nasiadka" />
 	<meta property="og:description" content="Asteroids game clone written in C++ with SFML - Maciej Nasiadka" />
 	<link rel="stylesheet" href="style.css">
+	<link rel="canonical" href="https://nasiadka.pl/asteroids/">
 	<title>Asteroids</title>
 </head>
 
@@ -37,13 +38,8 @@
 
 				<?php
 				//Read and show data from server
-				$server = "";
-				$login = "";
-				$password = "";
-				$db = "";
-
-				$connection = new mysqli($server, $login, $password, $db);
-
+				include("config.php");
+				$connection = new mysqli($SERVER, $LOGIN, $PASSWORD, $DB);
 				if ($connection->connect_errno) {
 					printf("Failed to connect to MySQL: ", $connection->connect_error);
 					exit();
